@@ -24,6 +24,7 @@
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
 body {
   position: relative;
   background: var(--bg);
@@ -36,10 +37,8 @@ body {
   padding-left: max(16px, env(safe-area-inset-left, 0px));
   padding-right: max(16px, env(safe-area-inset-right, 0px));
 }
-#bg {
+#bg, #waves {
   position: absolute; left: 0; top: 0; width: 100%; height: 900px; display: block; z-index: 0; pointer-events: none;
-  -webkit-mask-image: linear-gradient(to bottom, #000 68%, transparent);
-  mask-image: linear-gradient(to bottom, #000 68%, transparent);
 }
 .wrap { position: relative; z-index: 1; max-width: 1080px; margin: 0 auto; display: flex; flex-direction: column; gap: 120px; }
 h1, h2, h3 { font-family: var(--f-display); margin: 0; text-wrap: balance; letter-spacing: -0.02em; line-height: 1.1; }
@@ -58,7 +57,7 @@ nav a { text-decoration: none; font-size: 14px; font-weight: 500; color: var(--m
 nav a:hover { color: var(--fg); background: rgba(255,255,255,0.06); }
 
 /* logo tile */
-.tile { width: 76px; height: 76px; border-radius: 20px; background: linear-gradient(160deg, #1c1c1c, #050505); border: 1px solid rgba(184,212,51,0.45); box-shadow: 0 0 0 6px rgba(184,212,51,0.06), 0 0 60px rgba(184,212,51,0.30); display: grid; place-items: center; }
+.tile { width: 76px; height: 76px; border-radius: 20px; background: linear-gradient(160deg, #1c1c1c, #050505); border: 1px solid rgba(184,212,51,0.45); box-shadow: 0 0 0 6px rgba(184,212,51,0.06), 0 0 28px rgba(184,212,51,0.28); display: grid; place-items: center; }
 .tile img { width: 62%; height: auto; display: block; }
 .brand img { height: 34px; width: auto; display: block; }
 
@@ -75,7 +74,7 @@ nav a:hover { color: var(--fg); background: rgba(255,255,255,0.06); }
 .btn.primary { background: var(--lime); color: #000000; border-color: var(--lime); }
 .btn:hover { filter: brightness(1.12); }
 .hero-visual { display: flex; flex-direction: column; align-items: center; margin-top: 40px; }
-.beam { width: 200px; height: 190px; margin-top: -4px; background: linear-gradient(to bottom, rgba(184,212,51,0.55), rgba(184,212,51,0)); clip-path: polygon(38% 0, 62% 0, 100% 100%, 0 100%); filter: blur(6px); opacity: 0.8; }
+.beam { width: 200px; height: 190px; margin-top: -4px; background: linear-gradient(to bottom, rgba(184,212,51,0.55), rgba(184,212,51,0)); clip-path: polygon(38% 0, 62% 0, 100% 100%, 0 100%); opacity: 0.7; }
 .ticker { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 34px; margin-top: 28px; font-family: var(--f-display); font-weight: 600; font-size: 15px; color: rgba(255,255,255,0.7); }
 
 /* section headings */
@@ -103,7 +102,7 @@ nav a:hover { color: var(--fg); background: rgba(255,255,255,0.06); }
 .step h3 { font-size: 19px; font-weight: 600; }
 .step p { font-size: 13.5px; color: var(--muted); }
 .viz { height: 190px; display: flex; align-items: center; justify-content: center; padding: 18px; }
-.orb { width: 108px; height: 108px; border-radius: 50%; background: radial-gradient(circle at 50% 35%, #2a2a2a, #090909 70%); box-shadow: 0 0 0 1px var(--line-strong), 0 0 50px rgba(184,212,51,0.18); display: grid; place-items: center; }
+.orb { width: 108px; height: 108px; border-radius: 50%; background: radial-gradient(circle at 50% 35%, #2a2a2a, #090909 70%); box-shadow: 0 0 0 1px var(--line-strong), 0 0 24px rgba(184,212,51,0.2); display: grid; place-items: center; }
 .orb .tile { width: 56px; height: 56px; border-radius: 16px; box-shadow: none; }
 .list { width: 100%; display: flex; flex-direction: column; gap: 0; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
 .list span { padding: 9px 12px; font-size: 12px; color: var(--muted); border-bottom: 1px solid var(--line); display: flex; align-items: center; gap: 8px; }
@@ -149,7 +148,7 @@ nav a:hover { color: var(--fg); background: rgba(255,255,255,0.06); }
 .quote form { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
 .field { display: flex; flex-direction: column; gap: 6px; }
 .field label { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
-select, textarea { font: inherit; font-size: 15px; color: var(--fg); background: rgba(255,255,255,0.05); border: 1px solid var(--line-strong); border-radius: 12px; padding: 12px 14px; width: 100%; }
+select, textarea { font: inherit; font-size: 16px; color: var(--fg); background: rgba(255,255,255,0.05); border: 1px solid var(--line-strong); border-radius: 12px; padding: 12px 14px; width: 100%; }
 textarea { min-height: 100px; resize: vertical; }
 .out { font-family: var(--f-mono); font-size: 12.5px; color: var(--muted); border: 1px dashed var(--line-strong); border-radius: 12px; padding: 12px 14px; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 76px; }
 .status { font-size: 14px; color: var(--muted); }
@@ -158,6 +157,17 @@ textarea { min-height: 100px; resize: vertical; }
 
 footer { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; border-top: 1px solid var(--line); padding-top: 20px; font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
 
+.ig { font-family: var(--f-mono); font-size: 12.5px; color: var(--lime); text-decoration: none; overflow-wrap: anywhere; }
+.ig:hover { text-decoration: underline; }
+.contacts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.cbox { display: flex; flex-direction: column; gap: 14px; }
+.cbox h3 { font-size: 20px; font-weight: 600; }
+.cbox .big { font-family: var(--f-display); font-size: 18px; font-weight: 600; text-decoration: none; overflow-wrap: anywhere; }
+.cbox .big:hover { color: var(--lime); }
+.addr { font-style: normal; color: var(--muted); font-size: 15px; line-height: 1.6; }
+.row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto; }
+.row .btn { padding: 11px 20px; font-size: 14px; }
+
 @media (max-width: 960px) {
   .svc, .svc:nth-child(n+5) { grid-column: span 6; }
   .svc:last-child { grid-column: 1 / -1; }
@@ -165,19 +175,24 @@ footer { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wr
 }
 @media (max-width: 760px) {
   .wrap { gap: 88px; }
-  .feats, .rooms, .people { grid-template-columns: minmax(0, 1fr); }
+  .feats, .rooms, .people, .contacts { grid-template-columns: minmax(0, 1fr); }
   .quote { grid-template-columns: minmax(0, 1fr); gap: 28px; }
   .hero { padding-top: 32px; }
 }
 @media (max-width: 560px) {
   .svc, .svc:nth-child(n+5) { grid-column: 1 / -1; }
   .steps { grid-template-columns: minmax(0, 1fr); }
-  #bg { height: 760px; }
+  #bg, #waves { height: 760px; }
+  nav { gap: 2px; }
+  nav a { padding: 6px 10px; font-size: 13.5px; }
+  .card { padding: 18px; }
+  .wrap { gap: 72px; }
 }
 @media (prefers-reduced-motion: reduce) { .btn:hover { filter: none; } }
 </style>
 
 <canvas id="bg" aria-hidden="true"></canvas>
+<canvas id="waves" aria-hidden="true"></canvas>
 
 <div class="wrap">
 
@@ -188,6 +203,7 @@ footer { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wr
       <a href="#process">How it works</a>
       <a href="#about">About</a>
       <a href="#quote">Quote</a>
+      <a href="#contact">Contact</a>
     </nav>
   </header>
 
@@ -253,13 +269,14 @@ footer { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wr
         <span class="icon"><svg viewBox="0 0 24 24"><path d="M4 20 18 6"/><path d="M16 4a2 2 0 0 1 4 4l-1 1-4-4z"/><path d="M6 18c2-1 3 1 5 0s3-2 5-1"/></svg></span>
         <h3>Ari Work &amp; Embroidery</h3>
         <p>Ari (maggam) work for blouses and ethnic wear, and machine embroidery for logos and names. We sew a test before the full run.</p>
-        <span class="spec">Blouses · ethnic wear · caps · uniforms</span>
+        <span class="spec">Blouses · ethnic wear · kurtis · T-shirts · shirts · uniforms</span>
       </article>
       <article class="card svc">
         <span class="icon"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4V5z"/><path d="M8 10h.01M12 10h.01M16 10h.01"/></svg></span>
         <h3>Social Media Management</h3>
         <p>We design posts and reels, write captions and keep your business page active, so customers see your work regularly.</p>
         <span class="spec">Posts · reels · captions</span>
+        <a class="ig" id="ig" href="#" target="_blank" rel="noopener" hidden></a>
       </article>
       <article class="card svc">
         <span class="icon"><svg viewBox="0 0 24 24"><path d="M12 3 4 7.5v9L12 21l8-4.5v-9L12 3z"/><path d="M4 7.5 12 12l8-4.5M12 12v9"/></svg></span>
@@ -331,7 +348,6 @@ footer { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wr
       <span class="pill"><i></i>Get a quote</span>
       <h2>Tell us what you need</h2>
       <p>Pick a service, add a few details and copy the message. Send it to us and we will reply with price and timing.</p>
-      <div class="visit"><span>Visit</span><b>ColorCast Studio, Kolhapur, Maharashtra</b></div>
     </div>
     <form id="qform" novalidate>
       <div class="field">
@@ -356,95 +372,168 @@ footer { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wr
       </div>
       <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
         <button type="submit" class="btn primary">Copy message</button>
+        <a id="wa" class="btn" href="https://wa.me/918087395179" target="_blank" rel="noopener">Send on WhatsApp</a>
         <span class="status" id="status" role="status"></span>
       </div>
     </form>
   </section>
 
+  <section id="contact">
+    <div class="sec-head">
+      <span class="pill"><i></i>Contact</span>
+      <h2>Visit or reach us</h2>
+      <p>Call, message or drop by the studio in Kolhapur.</p>
+    </div>
+    <div class="contacts">
+      <article class="card cbox">
+        <span class="icon"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></span>
+        <h3>Call or WhatsApp</h3>
+        <a class="big" href="tel:+918087395179">+91 8087395179</a>
+        <div class="row"><a class="btn" href="tel:+918087395179">Call</a><a class="btn" href="https://wa.me/918087395179" target="_blank" rel="noopener">WhatsApp</a></div>
+      </article>
+      <article class="card cbox">
+        <span class="icon"><svg viewBox="0 0 24 24"><path d="M3 6h18v12H3z"/><path d="m3 7 9 6 9-6"/></svg></span>
+        <h3>Email</h3>
+        <a class="big" href="mailto:colorcast.org@gmail.com">colorcast.org@gmail.com</a>
+        <div class="row"><a class="btn" href="mailto:colorcast.org@gmail.com">Send email</a></div>
+      </article>
+      <article class="card cbox">
+        <span class="icon"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11a7 7 0 0 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+        <h3>Studio address</h3>
+        <address class="addr">Color Cast<br>239/A, Plot No. 46,<br>Nichite Nagar, Karvir,<br>Kolhapur &ndash; 416012,<br>Maharashtra, India.</address>
+        <div class="row"><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Color+Cast+239%2FA+Plot+No.+46+Nichite+Nagar+Karvir+Kolhapur+416012" target="_blank" rel="noopener">Open in Maps</a></div>
+      </article>
+    </div>
+  </section>
+
   <footer>
     <span>ColorCast Creative Printing &amp; Customization Studio</span>
-    <span>Kolhapur, Maharashtra</span>
+    <span>239/A, Plot No. 46, Nichite Nagar, Karvir, Kolhapur &ndash; 416012</span>
   </footer>
 </div>
 
 <script>
-/* background: nested valley curves, perspective floor and drifting dust */
+/* background: static light, floor and print marks plus animated valley waves; waves pause while scrolling or off screen */
 (function () {
-  var cv = document.getElementById("bg");
-  var ctx = cv.getContext("2d");
-  var W = 0, H = 0, dpr = 1, running = false;
+  var bg = document.getElementById("bg"), wv = document.getElementById("waves");
+  var bx = bg.getContext("2d"), wx = wv.getContext("2d");
+  var W = 0, H = 0, vx = 0, hy = 0, lastW = 0, fadeB = null, fadeW = null;
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var running = false, paused = false, visible = true, last = 0, rt = null, st = null;
   var stars = [];
-  for (var i = 0; i < 70; i++) stars.push({ x: Math.random(), y: Math.random() * 0.7, r: Math.random() * 1.2 + 0.3, s: Math.random() * 0.00004 + 0.00001, a: Math.random() * 0.5 + 0.15 });
+  for (var i = 0; i < 60; i++) stars.push({ x: Math.random(), y: Math.random() * 0.7, r: Math.random() * 1.2 + 0.3, s: Math.random() * 0.00004 + 0.00001, a: Math.random() * 0.5 + 0.15 });
 
-  function size() {
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
-    W = cv.clientWidth; H = cv.clientHeight;
-    cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  function mkFade(c) {
+    var f = c.createLinearGradient(0, H * 0.55, 0, H);
+    f.addColorStop(0, "rgba(0,0,0,0)"); f.addColorStop(1, "rgba(0,0,0,1)");
+    return f;
+  }
+  function fade(c, f) {
+    c.globalCompositeOperation = "destination-out";
+    c.fillStyle = f; c.fillRect(0, 0, W, H);
+    c.globalCompositeOperation = "source-over";
   }
 
-  function draw(t) {
-    ctx.clearRect(0, 0, W, H);
-    var vx = W / 2, hy = H * 0.66;
+  function setup() {
+    var dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    W = bg.clientWidth; H = bg.clientHeight; lastW = W;
+    bg.width = wv.width = Math.round(W * dpr);
+    bg.height = wv.height = Math.round(H * dpr);
+    bx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    wx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    vx = W / 2; hy = H * 0.66;
+    fadeB = mkFade(bx); fadeW = mkFade(wx);
+    drawStatic();
+  }
 
-    var g = ctx.createRadialGradient(vx, hy - 60, 0, vx, hy - 60, Math.max(W, 700) * 0.55);
+  function drawStatic() {
+    bx.clearRect(0, 0, W, H);
+    var g = bx.createRadialGradient(vx, hy - 60, 0, vx, hy - 60, Math.max(W, 700) * 0.55);
     g.addColorStop(0, "rgba(184,212,51,0.26)");
     g.addColorStop(0.45, "rgba(184,212,51,0.06)");
     g.addColorStop(1, "rgba(184,212,51,0)");
-    ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+    bx.fillStyle = g; bx.fillRect(0, 0, W, H);
 
-    for (var i = 0; i < stars.length; i++) {
-      var s = stars[i];
-      var y = (s.y + t * s.s) % 0.72;
-      ctx.fillStyle = "rgba(255,255,255," + s.a + ")";
-      ctx.beginPath(); ctx.arc(s.x * W, y * H, s.r, 0, 6.2832); ctx.fill();
-    }
-
-    var layers = 26, step = W > 700 ? 7 : 10;
-    for (var l = 0; l < layers; l++) {
-      var k = l / (layers - 1);
-      var lift = 40 + k * (hy - 20);
-      ctx.beginPath();
-      for (var x = 0; x <= W + step; x += step) {
-        var dx = (x - vx) / (W / 2);
-        var bowl = Math.pow(Math.abs(dx), 2.2) * lift * 0.95;
-        var wave = Math.sin(dx * 5 + t * 0.0005 + l * 0.32) * (3 + k * 7);
-        var yy = hy - bowl + wave + (1 - k) * 10;
-        if (x === 0) ctx.moveTo(x, yy); else ctx.lineTo(x, yy);
-      }
-      ctx.strokeStyle = "rgba(255,255,255," + (0.05 + k * 0.17).toFixed(3) + ")";
-      ctx.lineWidth = 1;
-      ctx.stroke();
-    }
-
-    ctx.lineWidth = 1;
+    bx.lineWidth = 1;
     var rays = 44;
     for (var r = -rays; r <= rays; r++) {
-      var ex = vx + r * (W / 30);
       var a = 0.2 * (1 - Math.abs(r) / (rays + 4));
-      var lg = ctx.createLinearGradient(0, hy, 0, H);
+      var lg = bx.createLinearGradient(0, hy, 0, H);
       lg.addColorStop(0, "rgba(255,255,255," + a.toFixed(3) + ")");
       lg.addColorStop(1, "rgba(255,255,255,0)");
-      ctx.strokeStyle = lg;
-      ctx.beginPath(); ctx.moveTo(vx + r * 3, hy); ctx.lineTo(ex, H); ctx.stroke();
+      bx.strokeStyle = lg;
+      bx.beginPath(); bx.moveTo(vx + r * 3, hy); bx.lineTo(vx + r * (W / 30), H); bx.stroke();
     }
     for (var j = 0; j < 12; j++) {
-      var p = ((j + (t * 0.00006)) % 12) / 12;
-      var ly = hy + (H - hy) * Math.pow(p, 2.1);
-      ctx.strokeStyle = "rgba(255,255,255," + (0.03 + p * 0.07).toFixed(3) + ")";
-      ctx.beginPath(); ctx.moveTo(0, ly); ctx.lineTo(W, ly); ctx.stroke();
+      var p = j / 12, ly = hy + (H - hy) * Math.pow(p, 2.1);
+      bx.strokeStyle = "rgba(255,255,255," + (0.03 + p * 0.07).toFixed(3) + ")";
+      bx.beginPath(); bx.moveTo(0, ly); bx.lineTo(W, ly); bx.stroke();
     }
+
+    bx.strokeStyle = "rgba(255,255,255,0.4)";
+    var marks = [[28, 30], [W - 28, 30]];
+    for (var m = 0; m < marks.length; m++) {
+      var mx = marks[m][0], my = marks[m][1];
+      bx.beginPath(); bx.arc(mx, my, 7, 0, 6.2832);
+      bx.moveTo(mx - 15, my); bx.lineTo(mx + 15, my); bx.moveTo(mx, my - 15); bx.lineTo(mx, my + 15);
+      bx.stroke();
+    }
+    if (W > 700) {
+      for (var k = 0; k < 6; k++) {
+        bx.fillStyle = "rgba(255,255,255," + (0.08 + k * 0.1).toFixed(2) + ")";
+        bx.fillRect(28 + k * 16, 640, 14, 14);
+      }
+    }
+    fade(bx, fadeB);
   }
 
-  function loop(t) { if (!running) return; draw(t); requestAnimationFrame(loop); }
-  function start() { if (reduce || running) return; running = true; requestAnimationFrame(loop); }
-  function stop() { running = false; }
+  function drawFrame(t) {
+    wx.clearRect(0, 0, W, H);
+    for (var i = 0; i < stars.length; i++) {
+      var s = stars[i], y = (s.y + t * s.s) % 0.72;
+      wx.fillStyle = "rgba(255,255,255," + s.a + ")";
+      wx.beginPath(); wx.arc(s.x * W, y * H, s.r, 0, 6.2832); wx.fill();
+    }
+    var layers = 20, step = W > 700 ? 8 : 12;
+    for (var l = 0; l < layers; l++) {
+      var k = l / (layers - 1), lift = 40 + k * (hy - 20);
+      wx.beginPath();
+      for (var x = 0; x <= W + step; x += step) {
+        var dx = (x - vx) / (W / 2);
+        var yy = hy - Math.pow(Math.abs(dx), 2.2) * lift * 0.95 + Math.sin(dx * 5 + t * 0.0005 + l * 0.32) * (3 + k * 7) + (1 - k) * 10;
+        if (x === 0) wx.moveTo(x, yy); else wx.lineTo(x, yy);
+      }
+      wx.strokeStyle = "rgba(255,255,255," + (0.05 + k * 0.17).toFixed(3) + ")";
+      wx.lineWidth = 1;
+      wx.stroke();
+    }
+    fade(wx, fadeW);
+  }
 
-  size(); draw(0);
-  window.addEventListener("resize", function () { size(); draw(0); });
-  document.addEventListener("visibilitychange", function () { if (document.hidden) stop(); else start(); });
-  start();
+  function loop(t) {
+    if (paused || !visible || document.hidden) { running = false; return; }
+    if (t - last >= 33) { last = t; drawFrame(t); }
+    requestAnimationFrame(loop);
+  }
+  function go() {
+    if (reduce || running || paused || !visible || document.hidden) return;
+    running = true; requestAnimationFrame(loop);
+  }
+
+  setup(); drawFrame(0); go();
+
+  window.addEventListener("scroll", function () {
+    paused = true; clearTimeout(st);
+    st = setTimeout(function () { paused = false; go(); }, 140);
+  }, { passive: true });
+  document.addEventListener("visibilitychange", go);
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(function (e) { visible = e[0].isIntersecting; go(); }).observe(wv);
+  }
+  window.addEventListener("resize", function () {
+    clearTimeout(rt);
+    rt = setTimeout(function () { if (wv.clientWidth !== lastW) { setup(); drawFrame(0); } }, 200);
+  });
 })();
 
 /* quote message builder */
@@ -454,6 +543,10 @@ footer { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wr
   var msg = document.getElementById("msg");
   var status = document.getElementById("status");
   var form = document.getElementById("qform");
+  var wa = document.getElementById("wa");
+  var INSTAGRAM = "";
+  var ig = document.getElementById("ig");
+  if (INSTAGRAM) { ig.href = "https://www.instagram.com/" + INSTAGRAM + "/"; ig.textContent = "@" + INSTAGRAM; ig.hidden = false; }
 
   function build() {
     var d = details.value.trim();
@@ -461,6 +554,7 @@ footer { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wr
     if (d) t += "\n\nDetails: " + d;
     t += "\n\nThank you.";
     msg.textContent = t;
+    wa.href = "https://wa.me/918087395179?text=" + encodeURIComponent(t);
     return t;
   }
   svc.addEventListener("change", build);
