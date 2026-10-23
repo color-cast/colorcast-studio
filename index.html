@@ -183,8 +183,21 @@ footer { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wr
   .svc, .svc:nth-child(n+5) { grid-column: 1 / -1; }
   .steps { grid-template-columns: minmax(0, 1fr); }
   #bg, #waves { height: 760px; }
-  nav { gap: 2px; }
-  nav a { padding: 6px 10px; font-size: 13.5px; }
+  .top { padding: 4px 2px; gap: 8px; margin-bottom: -36px; }
+  .brand img { height: 30px; }
+  nav { width: 100%; justify-content: space-between; gap: 0; }
+  nav a { padding: 6px 6px; font-size: 13px; }
+  .pill { font-size: 10px; letter-spacing: 0.05em; padding: 6px 12px; text-align: center; }
+  .hero { padding-top: 4px; gap: 16px; }
+  .hero h1 { font-size: clamp(40px, 12.5vw, 58px); max-width: none; line-height: 1.08; }
+  .hero h1 .l { display: block; }
+  .hero .lead { font-size: 16px; }
+  .cta { width: 100%; flex-direction: column; gap: 10px; }
+  .cta .btn { width: 100%; text-align: center; }
+  .hero-visual { margin-top: 16px; }
+  .beam { height: 120px; width: 150px; }
+  .ticker { font-size: 13px; gap: 6px 18px; margin-top: 16px; }
+  .sec-head { margin-bottom: 28px; }
   .card { padding: 18px; }
   .wrap { gap: 72px; }
 }
@@ -208,8 +221,8 @@ footer { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wr
   </header>
 
   <section class="hero" id="top">
-    <span class="pill"><i></i>Printing &amp; customization studio · Kolhapur</span>
-    <h1>Print it. Stitch it. <span class="hl">Build it.</span></h1>
+    <span class="pill"><i></i>Customization studio · Kolhapur</span>
+    <h1><span class="l">Print it.</span> <span class="l">Stitch it.</span> <span class="hl l">Build it.</span></h1>
     <p class="lead">DTF, sublimation, ari work, embroidery, 3D printing, electronics and websites. One studio in Kolhapur, Maharashtra.</p>
     <div class="cta">
       <a class="btn primary" href="#services">See our services</a>
@@ -449,15 +462,15 @@ footer { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wr
   function drawStatic() {
     bx.clearRect(0, 0, W, H);
     var g = bx.createRadialGradient(vx, hy - 60, 0, vx, hy - 60, Math.max(W, 700) * 0.55);
-    g.addColorStop(0, "rgba(184,212,51,0.26)");
-    g.addColorStop(0.45, "rgba(184,212,51,0.06)");
+    g.addColorStop(0, "rgba(184,212,51," + (W > 700 ? 0.26 : 0.18) + ")");
+    g.addColorStop(0.45, "rgba(184,212,51,0.05)");
     g.addColorStop(1, "rgba(184,212,51,0)");
     bx.fillStyle = g; bx.fillRect(0, 0, W, H);
 
     bx.lineWidth = 1;
     var rays = 44;
     for (var r = -rays; r <= rays; r++) {
-      var a = 0.2 * (1 - Math.abs(r) / (rays + 4));
+      var a = (W > 700 ? 0.2 : 0.09) * (1 - Math.abs(r) / (rays + 4));
       var lg = bx.createLinearGradient(0, hy, 0, H);
       lg.addColorStop(0, "rgba(255,255,255," + a.toFixed(3) + ")");
       lg.addColorStop(1, "rgba(255,255,255,0)");
@@ -471,7 +484,7 @@ footer { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wr
     }
 
     bx.strokeStyle = "rgba(255,255,255,0.4)";
-    var marks = [[28, 30], [W - 28, 30]];
+    var marks = W > 700 ? [[28, 30], [W - 28, 30]] : [];
     for (var m = 0; m < marks.length; m++) {
       var mx = marks[m][0], my = marks[m][1];
       bx.beginPath(); bx.arc(mx, my, 7, 0, 6.2832);
@@ -494,7 +507,7 @@ footer { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wr
       wx.fillStyle = "rgba(255,255,255," + s.a + ")";
       wx.beginPath(); wx.arc(s.x * W, y * H, s.r, 0, 6.2832); wx.fill();
     }
-    var layers = 20, step = W > 700 ? 8 : 12;
+    var layers = 20, step = W > 700 ? 8 : 12, wa = W > 700 ? 1 : 0.4;
     for (var l = 0; l < layers; l++) {
       var k = l / (layers - 1), lift = 40 + k * (hy - 20);
       wx.beginPath();
@@ -503,7 +516,7 @@ footer { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wr
         var yy = hy - Math.pow(Math.abs(dx), 2.2) * lift * 0.95 + Math.sin(dx * 5 + t * 0.0005 + l * 0.32) * (3 + k * 7) + (1 - k) * 10;
         if (x === 0) wx.moveTo(x, yy); else wx.lineTo(x, yy);
       }
-      wx.strokeStyle = "rgba(255,255,255," + (0.05 + k * 0.17).toFixed(3) + ")";
+      wx.strokeStyle = "rgba(255,255,255," + ((0.05 + k * 0.17) * wa).toFixed(3) + ")";
       wx.lineWidth = 1;
       wx.stroke();
     }
